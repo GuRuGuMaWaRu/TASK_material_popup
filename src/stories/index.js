@@ -9,6 +9,7 @@ import { WithNotes } from '@storybook/addon-notes';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import App from '../App';
+import App2 from '../App2';
 import Header from '../Header';
 import Intro from '../Intro';
 import '../App.css';
@@ -25,8 +26,7 @@ reqThemes.keys().forEach((filename) => {
  *  You can pass a single object or an array of themes
  */
 
-
-storiesOf('React App', module)
+storiesOf('Popup Component', module)
     .addDecorator(muiTheme(themesList)) /* [lightTheme, darkTheme, greyTheme]*/
     .addDecorator(story => (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -37,41 +37,8 @@ storiesOf('React App', module)
       </div>
     ))
     .addDecorator(withKnobs)
-    .add('App', () => {
-        setOptions({
-            name: 'React Theming',
-            url: 'https://github.com/sm-react/react-theming',
-        });
-        return (<App />);
-    })
-    .addWithInfo('App-header', '<Header />', () => withNote(
-      `
-        Header Component
-
-        source: src/Header.jsx
-        story: src/stories
-        test: src/tests
-      `,
-      <Header
-        title={text('Title', 'Welcome to React-Theming')}
-        subtitle={text('Subtitle', 'Storybook Boilerplate Project')}
-      />,
-    ))
-    .addWithInfo('App-intro', '<Intro />', () => withNote(
-      `
-        Intro Component
-
-        source: src/Intro.jsx
-        story: src/stories
-        test: src/tests
-      `,
-      <Intro />,
-    ))
-    .add('Addons Knobs & Notes', () => (
-      <div>
-        {text('Label1', 'Hello Button')}
-        {withNote(text('Label2', 'Hello Button'))}
-      </div>
+    .add('Popup', () => (
+        <App2 />
     ));
 
 
